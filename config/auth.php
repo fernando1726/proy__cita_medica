@@ -39,8 +39,13 @@ return [
 
     'guards' => [
         'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
+        'driver'   => 'session',
+        'provider' => 'users',
+    ],
+
+    'sanctum' => [              // ← debes tener esta entrada
+        'driver'   => 'sanctum',
+        'provider' => 'users',
         ],
     ],
 

@@ -8,10 +8,16 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->unique();
-            $table->string('descripcion')->nullable();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('telefono', 20)->nullable();
+            $table->date('fecha_nacimiento')->nullable();
+            $table->string('documento_identidad', 30)->nullable()->unique();
+            $table->rememberToken();
             $table->timestamps();
         });
 
@@ -25,6 +31,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('role_user');
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('users');
     }
 };
